@@ -66,7 +66,7 @@ Func Train()
 			Else
 				; More Troops Settings
 				If $ArmyComp >= $icmbTroopCap Then
-					SetLog("Troops Capacity is full, Fulling the barracks...")
+					SetLog("Troops Capacity is full, waiting for full camps...")
 					$ArmyComp = 0
 			    EndIf
 				If $ArmyComp = 0 Then
