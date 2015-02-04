@@ -19,7 +19,7 @@ Func VillageSearch($TakeSS = 0) ;Control for searching a village that meets cond
 
 			If $Restart = True Then ExitLoop (2)
 
-			If $TakeSS = True Then
+			If $TakeSS = 1 Then
 			   Local $Date = @MDAY & "." & @MON & "." & @YEAR
 			   Local $Time = @HOUR & "." & @MIN & "." & @SEC
 			   _CaptureRegion()
