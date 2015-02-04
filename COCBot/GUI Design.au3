@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 $frmBot = GUICreate($sBotTitle, 457, 392, 207, 158)
 GUISetIcon(@ScriptDir & "\Icons\cocbot.ico")
 TraySetIcon(@ScriptDir & "\Icons\cocbot.ico")
 $txtLog = _GUICtrlRichEdit_Create($frmBot, "", 16, 40, 425, 230, BitOR($ES_MULTILINE, $ES_READONLY, $WS_VSCROLL, 8912))
-$tabMain = GUICtrlCreateTab(8, 8, 441, 355)
+$tabMain = GUICtrlCreateTab(8, 8, 439, 355)
 GUICtrlSetOnEvent(-1, "tabMain")
+;Gaps added to seperate pages.
+
+;Genaral Tab
 $pageGeneral = GUICtrlCreateTabItem("General Settings")
-$Controls = GUICtrlCreateGroup("Controls", 16, 290, 185, 65)
+$Controls = GUICtrlCreateGroup("Controls", 16, 287, 185, 65)
 $btnStart = GUICtrlCreateButton("Start", 30, 314, 75, 25)
 GUICtrlSetOnEvent(-1, "btnStart")
 $btnStop = GUICtrlCreateButton("Stop", 30, 314, 75, 25)
@@ -23,11 +25,13 @@ GUICtrlSetData(-1, "0|1|2|3|4|5", "0")
 $lblMaxTrophy = GUICtrlCreateLabel("Max Trophy :", 230, 310, 66, 17)
 GUICtrlSetLimit(-1, 4)
 $txtMaxTrophy = GUICtrlCreateInput("3000", 298, 307, 71, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-GUICtrlSetTip(-1, "Bot will lose tropies if your trophy is greater than this.")
+GUICtrlSetTip(-1, "Bot will lose trophies if your trophy is greater than this.")
 $chkBackground = GUICtrlCreateCheckbox("Background Mode", 245, 330, 115, 17)
 GUICtrlSetOnEvent(-1, "chkBackground")
 GUICtrlSetState(-1, $GUI_UNCHECKED)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+;Search Tab
 $pageSearchSetting = GUICtrlCreateTabItem("Search Settings")
 $btnSearchMode = GUICtrlCreateButton("Search Mode", 24, 327, 368, 25)
 GUICtrlSetOnEvent(-1, "btnSearchMode")
@@ -60,13 +64,15 @@ $cmbTH = GUICtrlCreateCombo("", 330, 158, 61, 21, BitOR($CBS_DROPDOWNLIST, $CBS_
 GUICtrlSetData(-1, "4-6|7|8|9|10", "4-6")
 $lblResources = GUICtrlCreateLabel("Bot will stop when a base is found with resources higher or equal to the minimum resources.", 220, 193, 168, 51, $SS_CENTER)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-$OtherSearchSettings = GUICtrlCreateGroup("Other Seach Settings", 15, 262, 385, 55)
+$OtherSearchSettings = GUICtrlCreateGroup("Other Search Settings", 15, 262, 385, 55)
 $chkAlertSearch = GUICtrlCreateCheckbox("Alert when Base Found", 50, 287, 132, 17)
 GUICtrlSetState(-1, $GUI_CHECKED)
 $chkTakeTownSS = GUICtrlCreateCheckbox("Take All Towns Snapshot", 220, 275, 142, 17)
 $chkTakeLootSS = GUICtrlCreateCheckbox("Take All Loots Snapshot", 220, 295, 132, 17)
 GUICtrlSetState(-1, $GUI_CHECKED)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+;Attack Tab
 $pageAttackSettings = GUICtrlCreateTabItem("Attack Settings")
 $WeakBaseSettings = GUICtrlCreateGroup("Weak Base Settings", 15, 35, 130, 230)
 $lblMortar = GUICtrlCreateLabel("Max Mortar Lvl:", 20, 58, 77, 17)
@@ -123,6 +129,8 @@ GUICtrlSetData(-1, "Attack on a single side, penetrates through base|Attack on t
 $cmbAlgorithm = GUICtrlCreateCombo("", 30, 320, 215, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 GUICtrlSetData(-1, "Archers|Barbarians|Goblins|Barbarians + Archers|Barb + Arch + Goblin + Giant|Barb + Arch + Giant|Barb + Arch + Goblin|Barb + Arch + Goblin + Giant + Wallbreakers|Use Barracks|Use All Troops", "Use All Troops") ;"Archers|Barbarians|Goblins|Barbarians + Archers|Barb + Arch + Goblin + Giant|Barb + Arch + Giant|Barb + Arch + Goblin|Barb + Arch + Goblin + Giant + Wallbreakers|Use Barracks"
 GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+;Donate Tab
 $pageDonateSettings = GUICtrlCreateTabItem("Donate Settings")
 $Donation = GUICtrlCreateGroup("", 15, 30, 385, 325)
 $Barbarians = GUICtrlCreateGroup("Barbarians", 20, 70, 120, 235)
@@ -157,6 +165,8 @@ GUICtrlSetTip(-1, "Request for input.")
 $btnLocateClanCastle = GUICtrlCreateButton("Locate Clan Castle Manually", 25, 325, 365, 25)
 GUICtrlSetOnEvent(-1, "btnLocateClanClastle")
 GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+;Troop Tab
 $pageTroopSettings = GUICtrlCreateTabItem("Troop Settings")
 $Barracks = GUICtrlCreateGroup("Troops", 20, 40, 185, 215)
 $lblBarbarians = GUICtrlCreateLabel("Barbarians :", 30, 68, 60, 17)
@@ -209,6 +219,8 @@ $btnLocateBarracks = GUICtrlCreateButton("Locate Barracks Manually", 213, 315, 1
 GUICtrlSetOnEvent(-1, "btnLocateBarracks")
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
+
+
 $statLog = _GUICtrlStatusBar_Create($frmBot)
 _GUICtrlStatusBar_SetSimple($statLog)
 _GUICtrlStatusBar_SetText($statLog, "Status : Idle")
