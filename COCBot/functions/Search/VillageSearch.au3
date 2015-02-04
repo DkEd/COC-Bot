@@ -27,14 +27,14 @@ Func VillageSearch($TakeSS = 0) ;Control for searching a village that meets cond
 			EndIf
 			If CompareResources() Or ($THLoc = "Outside" And GUICtrlRead($chkMeetTHO) <> $GUI_CHECKED And GUICtrlRead($chkAttackTH) = $GUI_CHECKED) Then
 				If $THLoc = "Outside" And GUICtrlRead($chkMeetTHO) <> $GUI_CHECKED And GUICtrlRead($chkAttackTH) = $GUI_CHECKED Then
-					SetLog("~~~~~~~Outside Townhall Found!~~~~~~~")
+					SetLog("~~~~~~~Outside Townhall Found!~~~~~~~", $COLOR_PURPLE)
 					ExitLoop
 				ElseIf $iradAttackMode = 0 Then
 					If checkDeadBase() Then
-						SetLog("~~~~~~~Dead Base Found!~~~~~~~")
+						SetLog("~~~~~~~Dead Base Found!~~~~~~~", $COLOR_GREEN)
 						ExitLoop
 					Else
-						SetLog("~~~~~~~Not dead base, skipping~~~~~~~")
+						SetLog("~~~~~~~Not dead base, skipping~~~~~~~", $COLOR_RED)
 						Click(750, 500) ;Click Next
 					EndIf
 				Else
